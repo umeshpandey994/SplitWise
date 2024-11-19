@@ -70,7 +70,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
                 )
 
                 if expense.paid_by == user:
-                    total_outstanding += outstanding_balance
+                    total_outstanding += total_owes_sum
                 else:
                     total_outstanding -= outstanding_balance
 

@@ -159,8 +159,36 @@ curl -X POST http://localhost:8000/api/v1/expenses/ \
         "paid_by": 5,
         "currency": 1,
         "total_amount": 500,
-        "title": "Rental Car",
+        "title": "Car",
         "users": [1, 4, 5],
+        "split_type": "equal"
+      }' \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMDc1OTc2LCJpYXQiOjE3MzE5ODk1NzYsImp0aSI6IjhmYTAwZWI5NDQ2NTQ3MTE4MTNlYTE0ZWE1YTBhNmMxIiwidXNlcl9pZCI6NH0.knFr125bYhGpg9YwipCvUy2ezZGBuj0tmVx6gAeFnlQ"
+```
+
+```bash
+curl -X POST http://localhost:8000/api/v1/expenses/ \
+  -H "Content-Type: application/json" \
+  -d '{
+        "paid_by": 1,
+        "currency": 1,
+        "total_amount": 500,
+        "title": "Rental Car",
+        "users": [1, 4],
+        "split_type": "equal"
+      }' \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMDc1OTc2LCJpYXQiOjE3MzE5ODk1NzYsImp0aSI6IjhmYTAwZWI5NDQ2NTQ3MTE4MTNlYTE0ZWE1YTBhNmMxIiwidXNlcl9pZCI6NH0.knFr125bYhGpg9YwipCvUy2ezZGBuj0tmVx6gAeFnlQ"
+```
+
+```bash
+curl -X POST http://localhost:8000/api/v1/expenses/ \
+  -H "Content-Type: application/json" \
+  -d '{
+        "paid_by": 4,
+        "currency": 1,
+        "total_amount": 300,
+        "title": "Dinner",
+        "users": [1, 4],
         "split_type": "equal"
       }' \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMDc1OTc2LCJpYXQiOjE3MzE5ODk1NzYsImp0aSI6IjhmYTAwZWI5NDQ2NTQ3MTE4MTNlYTE0ZWE1YTBhNmMxIiwidXNlcl9pZCI6NH0.knFr125bYhGpg9YwipCvUy2ezZGBuj0tmVx6gAeFnlQ"

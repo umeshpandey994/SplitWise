@@ -24,14 +24,8 @@ from users.urls import urlpatterns as users_urls
 
 urlpatterns = [
     path("api/v1/", include(users_urls)),
-    path(
-        "api/token/", TokenObtainPairView.as_view(),
-        name="token-obtain-pair"
-    ),
-    path(
-        "api/token/refresh/", TokenRefreshView.as_view(),
-        name="token_refresh"
-    ),
+    path("api/token/", TokenObtainPairView.as_view(), name="token-obtain-pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/v1/", include(expenses_urls)),
     path("api/v1/", include(currency_urls)),
 ]

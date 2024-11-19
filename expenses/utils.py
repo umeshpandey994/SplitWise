@@ -12,9 +12,7 @@ def calculate_split(expense, users, split_type, amounts):
 
     elif split_type == "fixed":
         if len(amounts) != user_count:
-            raise ValueError(
-                "Number of fixed amounts must match the number of users."
-            )
+            raise ValueError("Number of fixed amounts must match the number of users.")
         split_data = {users[i]: amounts[i] for i in range(user_count)}
 
     elif split_type == "percentage":
@@ -22,8 +20,7 @@ def calculate_split(expense, users, split_type, amounts):
         if total_percentage != 100:
             raise ValueError("The sum of percentages must be 100.")
         split_data = {
-            users[i]: (
-                    total_amount * amounts[i] / 100) for i in range(user_count)
+            users[i]: (total_amount * amounts[i] / 100) for i in range(user_count)
         }
 
     return split_data

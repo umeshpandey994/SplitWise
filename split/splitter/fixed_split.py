@@ -5,8 +5,7 @@ class FixedSplit(SplitStrategy):
     def split(self, users, total_amount, amounts=None):
         if not amounts or len(amounts) != len(users):
             raise ValueError(
-                "Fixed amounts are required and must match the "
-                "number of users."
+                "Fixed amounts are required and must match the " "number of users."
             )
 
         if total_amount != sum(amounts):

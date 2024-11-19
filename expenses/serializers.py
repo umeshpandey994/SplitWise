@@ -13,7 +13,8 @@ class ExpenseSerializer(serializers.ModelSerializer):
         child=serializers.IntegerField(), write_only=True, required=True
     )
     split_type = serializers.ChoiceField(
-        choices=["equal", "fixed", "percentage"], write_only=True, required=True
+        choices=["equal", "fixed", "percentage"],
+        write_only=True, required=True
     )
     amounts = serializers.ListField(
         child=serializers.FloatField(), write_only=True, required=False
@@ -44,10 +45,14 @@ class ExpenseSerializer(serializers.ModelSerializer):
         split_type = attrs.get("split_type")
 
         if not users:
-            raise serializers.ValidationError({"users": "User list cannot be empty."})
+            raise serializers.ValidationError(
+                {"users": "User list cannot be empty."}
+            )
 
         if split_type not in ["equal", "fixed", "percentage"]:
-            raise serializers.ValidationError({"split_type": "Invalid split type."})
+            raise serializers.ValidationError(
+                {"split_type": "Invalid split type."}
+            )
 
         return attrs
 

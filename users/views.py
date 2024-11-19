@@ -21,7 +21,9 @@ class BalanceDataViewSet(viewsets.ModelViewSet):
         currency_id = self.request.query_params.get("currency_id", None)
 
         if user_id and currency_id:
-            return BalanceData.objects.filter(user_id=user_id, currency_id=currency_id)
+            return BalanceData.objects.filter(
+                user_id=user_id, currency_id=currency_id
+            )
         return BalanceData.objects.all()
 
     def update(self, request, *args, **kwargs):
@@ -36,5 +38,6 @@ class BalanceDataViewSet(viewsets.ModelViewSet):
         balance_data.save()
 
         return Response(
-            {"detail": "Balance updated successfully."}, status=status.HTTP_200_OK
+            {"detail": "Balance updated successfully."},
+            status=status.HTTP_200_OK
         )

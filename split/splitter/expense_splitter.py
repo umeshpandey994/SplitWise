@@ -3,9 +3,12 @@ from split.splitter.split import SplitStrategy
 
 class ExpenseSplitter:
     def __init__(
-        self, expense, users, total_amount, split_strategy: SplitStrategy, amounts
+        self,
+        users,
+        total_amount,
+        amounts,
+        split_strategy: SplitStrategy,
     ):
-        self.expense = expense
         self.users = users
         self.total_amount = total_amount
         self.split_strategy = split_strategy

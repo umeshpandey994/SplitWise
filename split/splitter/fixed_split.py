@@ -15,7 +15,7 @@ class FixedSplit(SplitStrategy):
                 "Please ensure the fixed amounts provided add up "
                 "to the total expense."
             )
-        splits = []
+        splits = {}
         for user, amount in zip(users, amounts):
-            splits.append({user: amount})
+            splits.update({user: amount})
         return splits

@@ -159,7 +159,7 @@ curl -X POST http://localhost:8000/api/v1/expenses/ \
         "paid_by": 5,
         "currency": 1,
         "total_amount": 500,
-        "title": "Car",
+        "title": "Lunch",
         "users": [1, 4, 5],
         "split_type": "equal"
       }' \
@@ -174,29 +174,31 @@ curl -X POST http://localhost:8000/api/v1/expenses/ \
         "currency": 1,
         "total_amount": 500,
         "title": "Rental Car",
-        "users": [1, 4],
-        "split_type": "equal"
+        "users": [1, 4, 5],
+        "split_type": "fixed",
+        "amounts": [200, 100, 200]
       }' \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMDc1OTc2LCJpYXQiOjE3MzE5ODk1NzYsImp0aSI6IjhmYTAwZWI5NDQ2NTQ3MTE4MTNlYTE0ZWE1YTBhNmMxIiwidXNlcl9pZCI6NH0.knFr125bYhGpg9YwipCvUy2ezZGBuj0tmVx6gAeFnlQ"
 ```
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/expenses/ \
-  -H "Content-Type: application/json" \
-  -d '{
-        "paid_by": 4,
-        "currency": 1,
-        "total_amount": 300,
-        "title": "Dinner",
-        "users": [1, 4],
-        "split_type": "equal"
-      }' \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMDc1OTc2LCJpYXQiOjE3MzE5ODk1NzYsImp0aSI6IjhmYTAwZWI5NDQ2NTQ3MTE4MTNlYTE0ZWE1YTBhNmMxIiwidXNlcl9pZCI6NH0.knFr125bYhGpg9YwipCvUy2ezZGBuj0tmVx6gAeFnlQ"
+   -H "Content-Type: application/json" \
+   -d '{
+   "paid_by": 4,
+   "currency": 1,
+   "total_amount": 100,
+   "title": "Movie",
+   "users": [1, 4, 5],
+   "split_type": "percentage",
+   "amounts": [10, 30, 60]
+   }' \
+   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMDc1OTc2LCJpYXQiOjE3MzE5ODk1NzYsImp0aSI6IjhmYTAwZWI5NDQ2NTQ3MTE4MTNlYTE0ZWE1YTBhNmMxIiwidXNlcl9pZCI6NH0.knFr125bYhGpg9YwipCvUy2ezZGBuj0tmVx6gAeFnlQ"
 ```
 
-Outstanding Balance for a given user
+Outstanding Balance for the logged in user
 
 ```bash
-curl -X GET "http://localhost:8000/api/v1/expenses/user-outstanding/?user_id=1" \
+curl -X GET "http://localhost:8000/api/v1/expenses/user-outstanding/" \
   -H "Content-Type: application/json"
 ```

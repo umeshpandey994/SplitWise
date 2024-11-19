@@ -6,8 +6,13 @@ class PercentageSplit(SplitStrategy):
         if not amounts or sum(amounts) != 100:
             raise ValueError("The sum of percentages must be 100.")
 
-        splits = []
+        if not amounts or len(amounts) != len(users):
+            raise ValueError(
+                "Fixed amounts are required and must match the number of users."
+            )
+
+        splits = {}
         for user, percent in zip(users, amounts):
             owes = (percent / 100) * total_amount
-            splits.append({user: owes})
+            splits.update({user: owes})
         return splits

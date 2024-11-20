@@ -196,7 +196,9 @@ curl -X POST http://localhost:8000/api/v1/expenses/ \
    -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMDc1OTc2LCJpYXQiOjE3MzE5ODk1NzYsImp0aSI6IjhmYTAwZWI5NDQ2NTQ3MTE4MTNlYTE0ZWE1YTBhNmMxIiwidXNlcl9pZCI6NH0.knFr125bYhGpg9YwipCvUy2ezZGBuj0tmVx6gAeFnlQ"
 ```
 
-Outstanding Balance for the logged in user
+### **Outstanding Balance for the logged-in user Endpoints Overview**:
+- **GET /api/v1/expenses/user-outstanding/**: Retrieve a list of Outstanding balance and breakdown by expenses.
+
 
 ```bash
 curl -X GET "http://localhost:8000/api/v1/expenses/user-outstanding/" \

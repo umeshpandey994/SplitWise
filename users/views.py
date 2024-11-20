@@ -9,12 +9,13 @@ from users.Serializer import BalanceDataSerializer, UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 class BalanceDataViewSet(viewsets.ModelViewSet):
     queryset = BalanceData.objects.all()
     serializer_class = BalanceDataSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user_id = self.request.query_params.get("user_id", None)

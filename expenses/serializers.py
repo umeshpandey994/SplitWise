@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 from expenses.models import Expenses
 from split.models import Split
+from users.models import User
 
 from .utils import calculate_split
 
@@ -42,12 +43,28 @@ class ExpenseSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         users = attrs.get("users")
         split_type = attrs.get("split_type")
+        total_amount = attrs.get("total_amount")
+        amounts = attrs.get("amounts")
+
+        if len(users) != User.objects.filter(id__in=users).count():
+            raise serializers.ValidationError({"users": "Please add the valid users."})
+
+        if total_amount <= 0:
+            raise serializers.ValidationError(
+                {"total_amount": "Total amount should be in positive."}
+            )
 
         if not users:
             raise serializers.ValidationError({"users": "User list cannot be empty."})
 
         if split_type not in ["equal", "fixed", "percentage"]:
             raise serializers.ValidationError({"split_type": "Invalid split type."})
+
+        if amounts:
+            if any(value < 0 for value in amounts):
+                raise serializers.ValidationError(
+                    {"amounts": "Values cannot contain negative numbers."}
+                )
 
         return attrs
 
